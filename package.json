@@ -1,0 +1,44 @@
+{
+  "name": "mefi-deleted",
+  "version": "0.0.0",
+  "description": "MetaFilter deleted posts",
+  "author": {
+    "name": "Cesar Ferreira",
+    "email": "cesar.manuel.ferreira@gmail.com",
+    "url": "http://cesarferreira.com"
+  },
+  "scripts": {
+    "start": "node example.js",
+    "lint": "eslint src/**/*",
+    "test": "xo"
+  },
+  "bin": {
+    "mefi-deleted": "cli.js"
+  },
+  "main": "cli.js",
+  "keywords": [],
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "feedparser": "^2.2.0",
+    "js-yaml": "^3.14.0",
+    "meow": "^7.0.1",
+    "moment": "^2.27.0",
+    "node-fetch": "^2.6.0",
+    "sanitize-filename": "^1.6.3",
+    "update-notifier": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "xo": "^0.32.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cesarferreira/mefi-deleted.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cesarferreira/mefi-deleted/issues"
+  },
+  "homepage": "https://github.com/cesarferreira/mefi-deleted#readme",
+  "license": "MIT"
+}
