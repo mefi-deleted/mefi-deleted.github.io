@@ -104,14 +104,10 @@ function done(err) {
 }
 
 // post ids are normally in numeric sequence. find any gaps and add them to an array
+// based on https://stackoverflow.com/a/55092621/
 function findMissingPostIds(postIds) {
-  const missing = [];
-  for (var i=1; i<postIds.length; i++) {
-    if (postIds[i-1]-1 != postIds[i]) {
-      missing.push(postIds[i]+1);
-    }
-  }
-  return missing;
+  const [min,max] = [Math.min(...postIds), Math.max(...postIds)];
+  return Array.from(Array(max-min),(v,i)=>i+min).filter(i=>!postIds.includes(i));
 }
 
 // fetch the deleted post from mefi and pull out the title, date, deletion reason, etc...
