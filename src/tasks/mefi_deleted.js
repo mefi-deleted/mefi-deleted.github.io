@@ -12,29 +12,27 @@ const moment = require('moment');
 const sanitize = require("sanitize-filename");
 const yaml = require('js-yaml');
 
-const urls = {
-  'blue': 'http://feeds.feedburner.com/Metafilter',
+const sites = {
+  'blue': {url: 'http://feeds.feedburner.com/Metafilter', subdomain: 'www'},
+  'green': {url: 'http://feeds.feedburner.com/AskMetafilter', subdomain: 'ask'},
 };
-
-const subdomains = {
- 'blue': 'www',
-}
 
 var activeSite;
 
 const postIds = [];
 
-// Main code //
+// Main code 
+// based partially on the feedparser example https://github.com/danmactough/node-feedparser/blob/HEAD/examples/complete.js
 const self = module.exports = {
 	init: input => {
 
-		if (input.length == 0 && (input[0] != 'blue' || input[0] != 'green')) {
-			log(Chalk.red(`Specify 'blue' or 'green'`));
+		if (input.length == 0 || ! Object.keys(sites).includes(input[0])) {
+			log(Chalk.red('Specify a valid site'));
 			return;
 		}
 	  
 	  activeSite = input[0];
-	  get(urls[activeSite]);
+	  get(sites[activeSite].url);
 	}
 };
 
@@ -118,7 +116,7 @@ function findMissingPostIds(postIds) {
 
 // fetch the deleted post from mefi and pull out the title, date, deletion reason, etc...
 function processDeletedPost(id) {
-  const url = `https://${subdomains[activeSite]}.metafilter.com/${id}`;
+  const url = `https://${sites[activeSite].subdomain}.metafilter.com/${id}`;
   fetch(url)
   .then(response => response.text())
   .then(data => {
