@@ -51,7 +51,6 @@ jobs:
     - name: Crawl MeFi
       run: |
         node cli.js deleted blue
-        node cli.js deleted green
     - name: Install Gems
       working-directory: mefideleted-blog
       run: | 
