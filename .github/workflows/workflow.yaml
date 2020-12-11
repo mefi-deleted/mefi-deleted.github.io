@@ -50,7 +50,7 @@ jobs:
       run: yarn
     - name: Crawl MeFi
       run: |
-        node cli.js deleted blue
+        NODE_EXTRA_CA_CERTS=intermediate.pem node cli.js deleted blue
     - name: Install Gems
       working-directory: mefideleted-blog
       run: | 
