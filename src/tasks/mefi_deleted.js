@@ -120,6 +120,10 @@ function processDeletedPost(id) {
     
     const dateStr = $('h1.posttitle > span.smallcopy').contents().not($('h1.posttitle > span.smallcopy').children()).text().trim();
     const date = moment(dateStr, "MMMM D, YYYY")
+    if (!date.isValid()) {
+      console.error("invalid date for "+url)
+      return;
+    }
     const dateFormatted = date.format(moment.HTML5_FMT.DATE);
     
     const postData = {
