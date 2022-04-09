@@ -21,7 +21,7 @@
     "feedparser": "^2.2.0",
     "js-yaml": "^3.14.0",
     "meow": "^7.0.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "node-fetch": "^2.6.7",
     "sanitize-filename": "^1.6.3",
     "update-notifier": "^4.1.0"
