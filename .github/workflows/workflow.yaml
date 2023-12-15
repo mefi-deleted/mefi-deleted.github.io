@@ -45,7 +45,7 @@ jobs:
     - name: Use Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2'
+        ruby-version: '2.6'
     - name: Install dependencies
       run: yarn
     - name: Crawl MeFi
@@ -55,7 +55,7 @@ jobs:
       working-directory: mefideleted-blog
       run: | 
         sudo apt-get -yqq install libpq-dev
-        gem install bundler
+        gem install bundler -v 2.4.22
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
     - name: Build site
