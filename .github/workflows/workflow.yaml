@@ -21,7 +21,7 @@ jobs:
     - name: Get existing posts
       run: rm -rf mefideleted-blog/_posts && mv master/_posts/ mefideleted-blog/
     - name: Bundler Cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: mefideleted-blog/vendor/bundle
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -31,7 +31,7 @@ jobs:
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
     - name: Yarn cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
